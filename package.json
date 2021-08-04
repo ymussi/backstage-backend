@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "root",
   "version": "1.0.0",
   "main": "dist/index.cjs.js",
   "types": "src/index.ts",
@@ -9,9 +9,9 @@
   },
   "scripts": {
     "dev": "yarn start",
-    "build": "backstage-cli bundle && lerna run build",
-    "build-image": "docker build ../.. -f Dockerfile --tag backstage && yarn workspace backend build-image",
     "start": "backstage-cli backend:dev",
+    "build": "backstage-cli backend:bundle && lerna run build",
+    "build-image": "docker build ../.. -f Dockerfile --tag backstage && yarn workspace backend build-image",
     "diff": "lerna run diff --",
     "test": "lerna run test --since origin/master -- --coverage && backstage-cli test",
     "test:all": "lerna run test -- --coverage",
@@ -61,12 +61,6 @@
   "resolutions": {
     "graphql-language-service-interface": "2.8.2",
     "graphql-language-service-parser": "1.9.0"
-  },
-  "workspaces": {
-    "packages": [
-      "packages/*",
-      "plugins/*"
-    ]
   },
   "prettier": "@spotify/prettier-config",
   "lint-staged": {
